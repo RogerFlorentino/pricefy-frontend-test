@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-promocoes',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromocoesComponent implements OnInit {
 
+  @ViewChild('modalCadastro') modalCadastroRef: any;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  ExibirModalCadastro() {
+		this.modalCadastroRef.show();
+	}
+
+  EsconderModalCadastro() {
+		this.modalCadastroRef.hide();
+	}
 
 }

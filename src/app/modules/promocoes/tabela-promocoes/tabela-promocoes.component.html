@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">GTIN</th>
+            <th scope="col">Descricao</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Preço regular</th>
+            <th scope="col">Preço promocional</th>
+            <th scope="col">Data início</th>
+            <th scope="col">Data fim</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let promocao of promocoes; index as i">            
+            <td>{{ promocao.id | number  }}</td>
+            <td>{{ promocao.gtin }}</td>
+            <td>{{ promocao.descricao }}</td>
+            <td>{{ promocao.categoria.descricao }}</td>
+            <td>{{ promocao.precoRegular | currency:'BRL':true:'1.2-2'}}</td>
+            <td>{{ promocao.precoPromocional | currency:'BRL':true:'1.2-2'}}</td>
+            <td>{{ promocao.dataInicial | date:'dd/MM/yyyy' }}</td>
+            <td>{{ promocao.dataFinal | date:'dd/MM/yyyy' }}</td>
+        </tr>
+    </tbody>
+</table>

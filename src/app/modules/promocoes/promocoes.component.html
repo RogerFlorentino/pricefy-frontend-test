@@ -1,1 +1,17 @@
-<p>promocoes works!</p>
+<h1>Promoções</h1>
+
+<div class="row">
+    <div class="col text-right">
+        <button class="btn btn-sm btn-primary" (click)="ExibirModalCadastro()"><i class="fa fa-plus"></i> Nova promoção</button>
+    </div>
+</div>
+
+<div class="row">
+    <app-tabela-promocoes></app-tabela-promocoes>
+</div>
+
+<app-modal-component #modalCadastro dialogClass="modal-md modal-dialog-centered" [hideHeader]="true" [hideFooter]="true">				
+	<div class="app-modal-body">
+		<app-cadastro (onSave)="EsconderModalCadastro()"></app-cadastro>
+	</div>
+</app-modal-component>

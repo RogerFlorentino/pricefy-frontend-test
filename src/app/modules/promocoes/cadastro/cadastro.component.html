@@ -1,0 +1,60 @@
+<form [formGroup]="form">
+
+    <h1 class="h3 mb-3 font-weight-normal text-center">Nova promoção</h1>
+
+    <div class="form-group">
+		<label for="nome">GTIN</label>
+		<input type="text" class="form-control" id="gtin" formControlName="gtin" autocomplete="none">
+		<label *ngIf="formHelper.CheckValidation(form,'gtin')" class="error">Campo
+			obrigatório</label>
+	</div>
+
+    <div class="form-group">
+		<label for="nome">Descrição</label>
+		<input type="text" class="form-control" id="descricao" formControlName="descricao" autocomplete="none">
+		<label *ngIf="formHelper.CheckValidation(form,'descricao')" class="error">Campo
+			obrigatório</label>
+	</div>
+
+    <div class="form-group">
+		<label for="nome">Categoria</label>
+		<input type="text" class="form-control" id="categoria" formControlName="categoria" autocomplete="none">
+		<label *ngIf="formHelper.CheckValidation(form,'categoria')" class="error">Campo
+			obrigatório</label>
+	</div>
+
+    <div class="form-group">
+		<label for="nome">Preço regular</label>
+		<input type="text" class="form-control" id="precoRegular" formControlName="precoRegular" autocomplete="none">
+		<label *ngIf="formHelper.CheckValidation(form,'precoRegular')" class="error">Campo
+			obrigatório</label>
+	</div>
+
+    <div class="form-group">
+		<label for="nome">Preço promocional</label>
+		<input type="text" class="form-control" id="precoPromocional" formControlName="precoPromocional" autocomplete="none">
+		<label *ngIf="formHelper.CheckValidation(form,'precoPromocional')" class="error">Campo
+			obrigatório</label>
+	</div>
+
+    <div class="form-group">
+		<label for="nome">Data de início</label>
+		<input type="text" class="form-control" id="dataInicio" formControlName="dataInicio" autocomplete="none">
+		<label *ngIf="formHelper.CheckValidation(form,'dataInicio')" class="error">Campo
+			obrigatório</label>
+	</div>
+
+    <div class="form-group">
+		<label for="nome">Data de finalização</label>
+		<input type="text" class="form-control" id="dataFim" formControlName="dataFim" autocomplete="none">
+		<label *ngIf="formHelper.CheckValidation(form,'dataFim')" class="error">Campo
+			obrigatório</label>
+	</div>
+
+    <div class="row">
+        <div class="col text-right">
+            <button class="btn btn-sm btn-success btn-block mb-3 mt-3" (click)="Salvar()" type="submit">Salvar</button>
+        </div>
+    </div>
+
+</form>
