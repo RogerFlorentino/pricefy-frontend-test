@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { SharedModule } from '../shared/shared.module';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
 		ReactiveFormsModule,
 		NgSelectModule,
-    SharedModule
+    SharedModule,
+    CurrencyMaskModule,
+    NgbDatepickerModule
   ]
 })
 export class PromocoesModule { }

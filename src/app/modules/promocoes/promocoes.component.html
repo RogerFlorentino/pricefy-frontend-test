@@ -12,6 +12,6 @@
 
 <app-modal-component #modalCadastro dialogClass="modal-md modal-dialog-centered" [hideHeader]="true" [hideFooter]="true">				
 	<div class="app-modal-body">
-		<app-cadastro (onSave)="EsconderModalCadastro()"></app-cadastro>
+		<app-cadastro (onSave)="EsconderModalCadastro()" (onCancel)="EsconderModalCadastro()"></app-cadastro>
 	</div>
 </app-modal-component>

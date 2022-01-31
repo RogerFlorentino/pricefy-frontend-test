@@ -2,58 +2,100 @@
 
     <h1 class="h3 mb-3 font-weight-normal text-center">Nova promoção</h1>
 
-    <div class="form-group">
-		<label for="nome">GTIN</label>
-		<input type="text" class="form-control" id="gtin" formControlName="gtin" autocomplete="none">
-		<label *ngIf="formHelper.CheckValidation(form,'gtin')" class="error">Campo
-			obrigatório</label>
+    <div class="row">
+		<div class="form-group col-6">
+			<label for="nome">GTIN</label>
+			<input type="text" maxlength="14" class="form-control" id="gtin" formControlName="gtin" autocomplete="none">
+			<label *ngIf="formHelper.CheckValidation(form,'gtin')" class="error">Campo
+				obrigatório</label>
+		</div>
 	</div>
 
     <div class="form-group">
-		<label for="nome">Descrição</label>
-		<input type="text" class="form-control" id="descricao" formControlName="descricao" autocomplete="none">
+		<label for="nome">Descrição</label>		
+		<textarea type="text" maxlength="100" class="form-control" id="descricao" formControlName="descricao" autocomplete="none"></textarea>
 		<label *ngIf="formHelper.CheckValidation(form,'descricao')" class="error">Campo
 			obrigatório</label>
 	</div>
 
     <div class="form-group">
 		<label for="nome">Categoria</label>
-		<input type="text" class="form-control" id="categoria" formControlName="categoria" autocomplete="none">
+		<ng-select [ngClass]="'ng-select'" id="categoria" placeholder="Selecione a categoria"
+			typeToSearchText="Busca..." [clearable]="false" [items]="categorias" formControlName="categoria"
+			notFoundText="Nada encontrado">
+		</ng-select>		
 		<label *ngIf="formHelper.CheckValidation(form,'categoria')" class="error">Campo
 			obrigatório</label>
 	</div>
 
-    <div class="form-group">
-		<label for="nome">Preço regular</label>
-		<input type="text" class="form-control" id="precoRegular" formControlName="precoRegular" autocomplete="none">
-		<label *ngIf="formHelper.CheckValidation(form,'precoRegular')" class="error">Campo
-			obrigatório</label>
+	<div class="row">
+		<div class="form-group col">
+			<label for="nome">Preço regular</label>
+			<input type="text" 
+				currencyMask 
+				[options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+				class="form-control" 
+				id="precoRegular" 
+				formControlName="precoRegular" 
+				autocomplete="none">
+			<label *ngIf="formHelper.CheckValidation(form,'precoRegular')" class="error">Campo
+				obrigatório</label>
+		</div>
+	
+		<div class="form-group col">
+			<label for="nome">Preço promocional</label>
+			<input type="text" 
+				currencyMask 
+				[options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+				class="form-control" 
+				id="precoPromocional" 
+				formControlName="precoPromocional" 
+				autocomplete="none">
+			<label *ngIf="formHelper.CheckValidation(form,'precoPromocional')" class="error">Campo
+				obrigatório</label>
+		</div>
 	</div>
 
-    <div class="form-group">
-		<label for="nome">Preço promocional</label>
-		<input type="text" class="form-control" id="precoPromocional" formControlName="precoPromocional" autocomplete="none">
-		<label *ngIf="formHelper.CheckValidation(form,'precoPromocional')" class="error">Campo
-			obrigatório</label>
-	</div>
-
-    <div class="form-group">
-		<label for="nome">Data de início</label>
-		<input type="text" class="form-control" id="dataInicio" formControlName="dataInicio" autocomplete="none">
-		<label *ngIf="formHelper.CheckValidation(form,'dataInicio')" class="error">Campo
-			obrigatório</label>
-	</div>
-
-    <div class="form-group">
-		<label for="nome">Data de finalização</label>
-		<input type="text" class="form-control" id="dataFim" formControlName="dataFim" autocomplete="none">
-		<label *ngIf="formHelper.CheckValidation(form,'dataFim')" class="error">Campo
-			obrigatório</label>
+	<div class="row">
+		<div class="form-group col">
+			<label for="nome">Data de início</label>
+			<input 
+				(click)="DataInicio.toggle()" 
+				class="form-control text-end" 
+				placeholder="xx/xx/xxxx"
+				name="dataInicio" 
+				formControlName="dataInicio"
+				ngbDatepicker 
+				#DataInicio="ngbDatepicker"
+				[firstDayOfWeek]="7"
+				[minDate]="calendar.getToday()">
+			
+			<label *ngIf="formHelper.CheckValidation(form,'dataInicio')" class="error">Campo
+				obrigatório</label>
+		</div>
+	
+		<div class="form-group col">
+			<label for="nome">Data de finalização</label>
+			<input 
+				(click)="DataFim.toggle()" 
+				class="form-control text-end" 
+				placeholder="xx/xx/xxxx"
+				name="dataFim" 
+				formControlName="dataFim"
+				ngbDatepicker 
+				#DataFim="ngbDatepicker"
+				[firstDayOfWeek]="7"
+				[minDate]="calendar.getToday()">
+			
+			<label *ngIf="formHelper.CheckValidation(form,'dataFim')" class="error">Campo
+				obrigatório</label>
+		</div>
 	</div>
 
     <div class="row">
         <div class="col text-right">
-            <button class="btn btn-sm btn-success btn-block mb-3 mt-3" (click)="Salvar()" type="submit">Salvar</button>
+            <button class="btn btn-sm btn-success btn-block mb-3 mt-3 me-1" (click)="Salvar()" type="submit">Salvar</button>
+            <button class="btn btn-sm btn-secondary btn-block mb-3 mt-3" (click)="Cancelar()" type="submit">Cancelar</button>
         </div>
     </div>
 
